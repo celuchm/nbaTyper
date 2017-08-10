@@ -1,0 +1,25 @@
+{% extends 'base/base.html.twig' %}
+{%	block	content	%}
+<h1>Lista lig</h1>
+
+<table>
+
+    <tbody>
+    {% for league in leagues %}
+        <tr>
+            <td>{{ league.getLeagueName }} --
+                <a href="{{ url('league_seasons', {'leagueId': league.getId}) }}">sezony</a> --
+                <a href="{{ url('league_close', {'leagueId': league.getId}) }}">zamknij ligę</a>
+
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ url('league_new') }}">Create a new league</a>
+    </li>
+</ul>
+{%	endblock	%}

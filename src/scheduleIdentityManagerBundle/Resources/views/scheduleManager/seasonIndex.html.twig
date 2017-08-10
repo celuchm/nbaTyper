@@ -1,0 +1,31 @@
+{% extends 'base/base.html.twig' %}
+{%	block	content	%}
+    <h1>sezony</h1>
+    {% if seasons != null %}
+    <table>
+
+        <tbody>
+
+        {% for season in seasons %}
+            <tr>
+                <td>
+                    {{ season.getSeasonStartDate|date('Y-m-d') }} - {{ season.getSeasonEndDate|date('Y-m-d') }} -
+                    <a href="{{ path('seasonManager', {'season': season.id }) }}">zarządzaj sezonem</a>
+                    <a href="{{ path('renderSeasonCalendar', {'season': season.id }) }}">kalendarz</a>
+                    <a href="{{ path('seasonTeams', {'season': season.id }) }}">zespoły</a>
+                    <a href="{{ path('uploadCsvCalendarForm', {'seasonId': season.id }) }}">załaduj kalendarz z pliku csv</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        brak aktywnych sezonów
+    {% endif %}
+    <ul>
+        <li>
+            <a href="{{ url('season_new') }}">nowy sezon</a>
+        </li>
+    </ul>
+{%	endblock	%}

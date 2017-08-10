@@ -1,0 +1,13 @@
+schedule_identity_manager:
+    resource: "@scheduleIdentityManagerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+game_manager:
+    resource: "@gameManagerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

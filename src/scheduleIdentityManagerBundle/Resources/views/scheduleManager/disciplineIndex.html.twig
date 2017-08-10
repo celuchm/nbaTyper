@@ -1,0 +1,24 @@
+{% extends 'base/base.html.twig' %}
+{%	block	content	%}
+<h1>Seasons list</h1>
+
+<table>
+
+    <tbody>
+    {% for discipline in disciplines %}
+        <tr>
+            <td>{{ discipline.getDisciplineName }} --
+                <a href="{{ path('league_index', {'disciplineName': discipline.disciplineName }) }}">przypisane ligi</a>
+                <a href="{{ path('discipline_delete', {'id': discipline.id }) }}">usuń dyscyplinę</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('discipline_new') }}">Create a new discipline</a>
+    </li>
+</ul>
+{%	endblock	%}

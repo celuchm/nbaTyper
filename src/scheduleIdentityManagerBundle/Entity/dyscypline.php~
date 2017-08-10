@@ -1,0 +1,64 @@
+<?php
+
+namespace scheduleIdentityManagerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * dyscypline
+ *
+ * @ORM\Table(name="dyscypline")
+ * @ORM\Entity(repositoryClass="scheduleIdentityManagerBundle\Repository\dyscyplineRepository")
+ */
+class dyscypline
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dyscyplineName", type="string", length=255)
+     */
+    private $dyscyplineName;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dyscyplineName
+     *
+     * @param string $dyscyplineName
+     * @return dyscypline
+     */
+    public function setDyscyplineName($dyscyplineName)
+    {
+        $this->dyscyplineName = $dyscyplineName;
+
+        return $this;
+    }
+
+    /**
+     * Get dyscyplineName
+     *
+     * @return string 
+     */
+    public function getDyscyplineName()
+    {
+        return $this->dyscyplineName;
+    }
+}
