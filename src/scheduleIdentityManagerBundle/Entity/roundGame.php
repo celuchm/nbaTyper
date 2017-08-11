@@ -61,21 +61,21 @@ class roundGame
     /**
      * @var string
      *
-     * @ORM\Column(name="gameStatus", type="string", length=255)
+     * @ORM\Column(name="gameStatus", type="string", length=255, nullable = true)
      */
     private $gameStatus;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="scoreHome", type="float")
+     * @ORM\Column(name="scoreHome", type="float",  nullable = true)
      */
     private $scoreHome;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="scoreAway", type="float")
+     * @ORM\Column(name="scoreAway", type="float",  nullable = true)
      */
     private $scoreAway;
 

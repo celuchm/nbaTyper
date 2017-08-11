@@ -41,7 +41,7 @@ class round
     /**
      * @var int
      *
-     * @ORM\Column(name="seasonId", type="integer")
+     * @ORM\Column(name="seasonId", type="integer",  nullable = true)
      * @ORM\ManyToOne(targetEntity="season", inversedBy="rounds")
      * @ORM\JoinColumn(name="seasonId", referencedColumnName="id")
      */
@@ -50,14 +50,14 @@ class round
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateStart", type="date")
+     * @ORM\Column(name="dateStart", type="date",  nullable = true)
      */
     private $dateStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEnd", type="date")
+     * @ORM\Column(name="dateEnd", type="date", nullable = true)
      */
     private $dateEnd;
 

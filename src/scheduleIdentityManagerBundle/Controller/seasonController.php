@@ -71,35 +71,21 @@ class seasonController extends Controller{
      */
     public function uploadCsvCalendarAction(Request $request, $seasonId){
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("Select l.leagueName, s.seasonStartDate, s.seasonEndDate from scheduleIdentityManagerBundle:season s join scheduleIdentityManagerBundle:league l where s.id = :seasonId and s.league = l.id ");
-        $query->setParameter("seasonId", $seasonId);
-        $leagueSeasonData = $query->getResult()[0];
-        $seasonName = $leagueSeasonData['leagueName'] ." - sezon " . $leagueSeasonData['seasonStartDate']->format('Y'). '-' . $leagueSeasonData['seasonEndDate']->format('Y');
+        $seasonName=$this->getSeasonDisplayName($em, $seasonId);
         $form = $this->getForm('csv', array('seasonId' => $seasonId, 'request' => $request));
 
-
         if($form->isSubmitted()){
-
             $formData = $form->getData();
-            $test = $formData;
-            //$getGamesArray = $this->getGamesArray($formData['file']);
-            //$this->uploadGames($getGamesArray);
-            //$test=$formData['seasonId'];
 
 
-            return $this->render('scheduleIdentityManagerBundle:scheduleManager:test.html.twig', array(
-                'test' => $test
+            return $this->forward('scheduleIdentityManagerBundle:round:generateRound', array(
+                'formData' => $formData
             ));
-
         }
-
-
-
 
         return $this->render('scheduleIdentityManagerBundle:scheduleManager:uploadCsvSeason.html.twig', array(
             'form' => $form->createView(),
             'uploadTitle' => $seasonName
-
         ));
     }
 
@@ -186,19 +172,20 @@ class seasonController extends Controller{
 
 
 
-    private function getGamesArray($file){
-        $fileToOpen = fopen($file,"r");
-        $teamsArray = [];
-        $i=0;
 
-        while(! feof($fileToOpen))
-        {
-            $singleRow = fgetcsv($fileToOpen);
-            if($i>0){
-                $teamsArray[] = $singleRow;
-            }
-            $i++;
-        }
+    private function getSeasonDisplayName($em, $seasonId){
+
+        $query = $em->createQuery("Select l.leagueName, s.seasonStartDate, s.seasonEndDate 
+                                   from scheduleIdentityManagerBundle:season s 
+                                   join scheduleIdentityManagerBundle:league l 
+                                   where s.id = :seasonId 
+                                   and s.league = l.id ");
+        $query->setParameter("seasonId", $seasonId);
+        $leagueSeasonData = $query->getResult()[0];
+
+        return  $leagueSeasonData['leagueName'] ." - sezon ".
+                $leagueSeasonData['seasonStartDate']->format('Y').'-'.
+                $leagueSeasonData['seasonEndDate']->format('Y');
     }
 
 
