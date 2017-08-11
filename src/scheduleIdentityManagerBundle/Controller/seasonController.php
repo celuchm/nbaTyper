@@ -3,12 +3,14 @@
 namespace scheduleIdentityManagerBundle\Controller;
 
 use scheduleIdentityManagerBundle\Entity\discipline;
+use scheduleIdentityManagerBundle\Entity\team;
 use scheduleIdentityManagerBundle\Entity\season;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 /**
@@ -42,14 +44,30 @@ class seasonController extends Controller{
     }
 
     /**
-     * @Route("/teams", name="seasonTeams")
+     * @Route("/teams/{seasonId}", name="seasonTeams")
      */
-    public function showSeasonTeamsAction(Request $request){
+    public function showSeasonTeamsAction(Request $request, $seasonId){
 
+        $em = $this->getDoctrine()->getManager();
+        //$query = $em->createQuery("Select t.team_short from teams t");
+        $count = $em->createQuery("Select count(st) from scheduleIdentityManagerBundle:seasonTeams st where st.seasonId = :seasonId")->setParameter("seasonId", $seasonId)
+        ->getSingleScalarResult();
+
+        $query = $em->createQuery("Select t.id, t.teamShortName from scheduleIdentityManagerBundle:seasonTeams st join scheduleIdentityManagerBundle:team t where t.id = st.teamId and st.seasonId = :seasonId");
+        $query->setParameter("seasonId", $seasonId)->setHint('knp_paginator.count', $count);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page',1),
+            10,
+            array('distinct' => false)
+        );
+        return $this->render('scheduleIdentityManagerBundle:scheduleManager:showTeams.html.twig', array('pagination' => $pagination));
     }
 
     /**
      * @Route("/uploadCallendarCsvForm/{seasonId}", name="uploadCsvCalendarForm")
+     * @Method({"POST", "GET"})
      */
     public function uploadCsvCalendarAction(Request $request, $seasonId){
         $em = $this->getDoctrine()->getManager();
@@ -57,25 +75,42 @@ class seasonController extends Controller{
         $query->setParameter("seasonId", $seasonId);
         $leagueSeasonData = $query->getResult()[0];
         $seasonName = $leagueSeasonData['leagueName'] ." - sezon " . $leagueSeasonData['seasonStartDate']->format('Y'). '-' . $leagueSeasonData['seasonEndDate']->format('Y');
+        $form = $this->getForm('csv', array('seasonId' => $seasonId, 'request' => $request));
 
-        $formBuilder	=	$this->createFormBuilder()
-            ->add('file', FileType::class, array('label' => "plik"))
-            ->setAction($this->generateUrl('renderSeasonCalendar'))
-            ->setMethod('POST');
 
-        $form = $formBuilder->getForm();
+        if($form->isSubmitted()){
+
+            $formData = $form->getData();
+            $test = $formData;
+            //$getGamesArray = $this->getGamesArray($formData['file']);
+            //$this->uploadGames($getGamesArray);
+            //$test=$formData['seasonId'];
+
+
+            return $this->render('scheduleIdentityManagerBundle:scheduleManager:test.html.twig', array(
+                'test' => $test
+            ));
+
+        }
+
+
+
 
         return $this->render('scheduleIdentityManagerBundle:scheduleManager:uploadCsvSeason.html.twig', array(
             'form' => $form->createView(),
             'uploadTitle' => $seasonName
+
         ));
     }
 
 
     /**
      * @Route("/calendar", name="renderSeasonCalendar")
+     * @Method({"POST"})
      */
     public function renderSeasonCalendarAction(Request $request){
+
+
 
     }
 
@@ -87,18 +122,19 @@ class seasonController extends Controller{
         $season = new season();
         $em = $this->getDoctrine()->getManager();
         $leaguesRepository = $em->getRepository('scheduleIdentityManagerBundle:league');
-        $formOptions = $this->getLeagueFormOptions($leaguesRepository);
 
-        $form = $this->createForm('scheduleIdentityManagerBundle\Form\seasonType', $season, $formOptions);
-        $form->handleRequest($request);
+
+        $form = $this->getForm('newSeason', array(
+            'repository'=>$leaguesRepository,
+            'season'=> $season,
+            'request'=>$request
+        ));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $testData = $form->getData();
             $leagueId = $testData->getLeague();
             $seasonLeague = $leaguesRepository->find($testData->getLeague());
-
             $season->setLeague($seasonLeague);
-
             $em->persist($season);
             $em->flush();
 
@@ -120,8 +156,50 @@ class seasonController extends Controller{
         return array('leagues' => $leagues, 'seasonType' => $seasonType);
     }
 
+    private function getForm($type, $options = array()){
+
+        switch($type) {
+            case "newSeason":
+                $leaguesRepository = $options['repository'];
+                $season = $options['season'];
+                $formOptions = $this->getLeagueFormOptions($leaguesRepository);
+                $form = $this->createForm('scheduleIdentityManagerBundle\Form\seasonType', $season, $formOptions);
+                $form->handleRequest($options['request']);
+                return $form;
+                break;
+
+            case "csv":
+
+                /*$form = $this->createForm('scheduleIdentityManagerBundle\Form\seasonCSVFileType', null, array('data' => $options['seasonId']));
+                $form->handleRequest($options['request']);
+                return $form;
+                */
+                 $formBuilder	=	$this->createFormBuilder()
+                    ->add('file', FileType::class, array('label' => "plik"))
+                    ->add('seasonId', HiddenType::class, array('data' => $options['seasonId']))
+                    ->setMethod('POST');
+                return $formBuilder->getForm()->handleRequest($options['request']);
+                break;
+
+        }
+    }
 
 
+
+    private function getGamesArray($file){
+        $fileToOpen = fopen($file,"r");
+        $teamsArray = [];
+        $i=0;
+
+        while(! feof($fileToOpen))
+        {
+            $singleRow = fgetcsv($fileToOpen);
+            if($i>0){
+                $teamsArray[] = $singleRow;
+            }
+            $i++;
+        }
+    }
 
 
 

@@ -12,7 +12,7 @@
                     {{ season.getSeasonStartDate|date('Y-m-d') }} - {{ season.getSeasonEndDate|date('Y-m-d') }} -
                     <a href="{{ path('seasonManager', {'season': season.id }) }}">zarządzaj sezonem</a>
                     <a href="{{ path('renderSeasonCalendar', {'season': season.id }) }}">kalendarz</a>
-                    <a href="{{ path('seasonTeams', {'season': season.id }) }}">zespoły</a>
+                    <a href="{{ path('seasonTeams', {'seasonId': season.id }) }}">zespoły</a>
                     <a href="{{ path('uploadCsvCalendarForm', {'seasonId': season.id }) }}">załaduj kalendarz z pliku csv</a>
 
                 </td>

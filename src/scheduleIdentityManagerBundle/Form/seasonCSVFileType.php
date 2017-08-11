@@ -1,21 +1,32 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: mc
+ * Date: 11.08.17
+ * Time: 12:56
+ */
+
+
+
 
 namespace scheduleIdentityManagerBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use scheduleIdentityManagerBundle\Entity\league;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class seasonFormCsvType extends AbstractType
+class seasonCSVFileType extends AbstractType
 {
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
-        $builder->add('file', FileType::class, array('label' => "kalendarz - CSV"));
+        $builder->add('file', FileType::class, array('label' => "plik"))
+            ->add('seasonId', HiddenType::class, array('data' => 'test'));
     }
 
     /**
@@ -23,7 +34,9 @@ class seasonFormCsvType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array());
+        $resolver->setDefaults(array(
+            'data_class' => null
+        ));
     }
 
     /**
@@ -31,8 +44,7 @@ class seasonFormCsvType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'scheduleidentitymanagerbundle_season';
+        return 'seasonCSVFile';
     }
-
 
 }
