@@ -5,6 +5,7 @@ namespace scheduleIdentityManagerBundle\Controller;
 use scheduleIdentityManagerBundle\Entity\discipline;
 use scheduleIdentityManagerBundle\Entity\team;
 use scheduleIdentityManagerBundle\Entity\season;
+use scheduleIdentityManagerBundle\Entity\round;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,12 +22,20 @@ class roundController extends Controller{
     public function generateRoundAction($formData){
         $file = $formData['file'];
         $allGames = $this->getGamesArray($file);
-        $gameDays = $this->getGameDays($allGames);
+        $gameDays = array_values(array_unique($this->getGameDays($allGames)));
 
+        foreach ($gameDays as $singleDay){
+            $round = new round();
+            $round->setRoundType('day');
+            $round->setDateStart($singleDay);
+            $round->setSeasonId($formData['seasonId']);
+
+
+        }
 
 
         return $this->render('scheduleIdentityManagerBundle:scheduleManager:test.html.twig', array(
-            'test' => $gameDays
+            'test' => $formData
         ));
     }
 
@@ -45,8 +54,8 @@ class roundController extends Controller{
             }
             $i++;
         }
-        $uniqueGameDays = array_unique($gamesArray);
-        return  $uniqueGameDays;
+        //$uniqueGameDays = $this->filterArray($gamesArray);
+        return  $gamesArray;
     }
 
     private function getGameDays($games){
@@ -60,7 +69,7 @@ class roundController extends Controller{
         return $gameDays;
     }
 
-    function decodeDate($csvDate, $hour){
+    private function decodeDate($csvDate, $hour){
         $year = "";
         $monthDayArray = explode(",", $csvDate);
 
@@ -80,13 +89,27 @@ class roundController extends Controller{
         return $date;
     }
 
-    function decodeTime($csvTime){
+    private function decodeTime($csvTime){
         $hour = explode(":", $csvTime);
         $hour = $hour[0];
         return $hour;
     }
 
-
+    private function filterArray($array){
+        $filterArray = array();
+        $i = 0;
+        foreach($array as $row){
+            if($i==0){
+                $filterArray[] = $row;
+            } else {
+                if(!in_array($row, $filterArray)){
+                    $filterArray[] = gettype($row);
+                }
+            }
+            $i++;
+        }
+        return $filterArray;
+    }
 
 
 

@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cf6e04d-9fa8-4236-a0bc-e91aacf459bb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/seasonController.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/seasonController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/round.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/round.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/roundGame.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/roundGame.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Tests/Controller/roundControllerTest.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Tests/Controller/roundControllerTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Tests/Controller/roundGameControllerTest.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Tests/Controller/roundGameControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/roundController.php" afterPath="$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/roundController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +24,7 @@
       <file leaf-file-name="seasonController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/seasonController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
+            <state relative-caret-position="2970">
               <caret line="173" column="0" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
               <folding>
                 <element signature="e#60#112#0#PHP" expanded="true" />
@@ -42,8 +39,8 @@
       <file leaf-file-name="roundController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/roundController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+            <state relative-caret-position="245">
+              <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
               <folding>
                 <element signature="e#60#112#0#PHP" expanded="true" />
               </folding>
@@ -64,9 +61,11 @@
       <file leaf-file-name="round.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/round.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="-469">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#56#104#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,7 +73,7 @@
       <file leaf-file-name="roundGame.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/roundGame.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
+            <state relative-caret-position="525">
               <caret line="77" column="67" lean-forward="false" selection-start-line="77" selection-start-column="67" selection-end-line="77" selection-end-column="67" />
               <folding />
             </state>
@@ -84,7 +83,7 @@
       <file leaf-file-name="seasonType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="216">
               <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
               <folding>
                 <element signature="e#54#94#0#PHP" expanded="true" />
@@ -96,7 +95,7 @@
       <file leaf-file-name="seasonCSVFileType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonCSVFileType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
+            <state relative-caret-position="414">
               <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
               <folding>
                 <element signature="e#6#82#0#PHP" expanded="true" />
@@ -109,7 +108,7 @@
       <file leaf-file-name="leagueController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/leagueController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
+            <state relative-caret-position="2178">
               <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding>
                 <element signature="e#61#113#0#PHP" expanded="true" />
@@ -142,9 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$disciplineId</find>
-      <find>setD</find>
-      <find>getD</find>
       <find>createForm</find>
       <find>season_index</find>
       <find>delete</find>
@@ -172,6 +168,9 @@
       <find>rounds</find>
       <find>renderSeasonCalendar</find>
       <find>getSeasonDisplayName</find>
+      <find>filterArray</find>
+      <find>getGamesArray</find>
+      <find>getGameDays</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -266,7 +265,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -485,6 +483,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -586,18 +585,19 @@
       <workItem from="1502347315291" duration="8427000" />
       <workItem from="1502358167254" duration="1427000" />
       <workItem from="1502432321884" duration="7736000" />
-      <workItem from="1502444999489" duration="9019000" />
+      <workItem from="1502444999489" duration="9124000" />
+      <workItem from="1502516722190" duration="1262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64602000" />
+    <option name="totallyTimeSpent" value="65969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="24" width="1313" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43567482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.284925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -828,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,21 +857,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="1296">
             <caret line="72" column="61" lean-forward="false" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
-            <folding>
-              <marker date="1497021939000" expanded="true" signature="2669:3329" ph="knp_paginator: &lt;3 keys&gt;" />
-              <marker date="1497021939000" expanded="true" signature="2775:3031" ph="default_options: &lt;4 keys&gt;" />
-              <marker date="1497021939000" expanded="true" signature="2811:2815" ph="page" />
-              <marker date="1497021939000" expanded="true" signature="2884:2888" ph="sort" />
-              <marker date="1497021939000" expanded="true" signature="2961:2970" ph="direction" />
-              <marker date="1497021939000" expanded="true" signature="3027:3031" ph="true" />
-              <marker date="1497021939000" expanded="true" signature="3133:3329" ph="template: &lt;2 keys&gt;" />
-              <marker date="1497021939000" expanded="true" signature="3163:3212" ph="KnpPagina….html.twig" />
-              <marker date="1497021939000" expanded="true" signature="3274:3329" ph="KnpPagina….html.twig" />
-              <marker date="1497021939000" expanded="true" signature="7308:7867" ph="..." />
-              <marker date="1497021939000" expanded="true" signature="7504:7636" ph="..." />
-              <marker date="1497021939000" expanded="true" signature="7652:7854" ph="..." />
-              <marker date="1497021939000" expanded="true" signature="7741:7838" ph="..." />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -892,7 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,7 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,7 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="81" column="6" lean-forward="false" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -916,7 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="58" lean-forward="false" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -968,17 +947,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonFromCsvType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonFromCsvType.php" />
     <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/leagueController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="734">
+        <state relative-caret-position="2178">
           <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="e#61#113#0#PHP" expanded="true" />
@@ -988,7 +960,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonCSVFileType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
+        <state relative-caret-position="414">
           <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
           <folding>
             <element signature="e#6#82#0#PHP" expanded="true" />
@@ -999,10 +971,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Form/seasonType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="216">
           <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
           <folding>
             <element signature="e#54#94#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/seasonController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2970">
+          <caret line="173" column="0" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+          <folding>
+            <element signature="e#60#112#0#PHP" expanded="true" />
+            <marker date="1502454311875" expanded="true" signature="1621:1717" ph="Select count... scheduleIdentityManagerBundle" />
+            <marker date="1502454311875" expanded="true" signature="1828:1999" ph="Select t.id,... scheduleIdentityManagerBundle" />
+            <marker date="1502454311875" expanded="true" signature="6364:6694" ph="Select l.lea... scheduleIdentityManagerBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/round.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-469">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#56#104#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1017,37 +1012,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/roundGame.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
+        <state relative-caret-position="525">
           <caret line="77" column="67" lean-forward="false" selection-start-line="77" selection-start-column="67" selection-end-line="77" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Entity/round.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/seasonController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="173" column="0" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding>
-            <element signature="e#60#112#0#PHP" expanded="true" />
-            <marker date="1502454311875" expanded="true" signature="1621:1717" ph="Select count... scheduleIdentityManagerBundle" />
-            <marker date="1502454311875" expanded="true" signature="1828:1999" ph="Select t.id,... scheduleIdentityManagerBundle" />
-            <marker date="1502454311875" expanded="true" signature="6364:6694" ph="Select l.lea... scheduleIdentityManagerBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scheduleIdentityManagerBundle/Controller/roundController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+        <state relative-caret-position="245">
+          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
           <folding>
             <element signature="e#60#112#0#PHP" expanded="true" />
           </folding>
