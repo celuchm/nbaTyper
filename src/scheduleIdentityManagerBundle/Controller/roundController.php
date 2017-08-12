@@ -24,15 +24,24 @@ class roundController extends Controller{
         $file = $formData['file'];
         $seasonId = $formData['seasonId'];
         $allGames = $this->getGamesArray($file);
-        $gameDays = array_values(array_unique($this->getGameDays($allGames)));
         $allGamesWithDate = $this->alterGameArray($allGames);
+        $gamesArray = $this->groupGamesByDate($allGamesWithDate);
 
-        $test = $this->createRounds($gameDays,$seasonId );
-        $test2 = $this->createRoundGames($allGamesWithDate,$seasonId );
+        $test44 = array();
+        foreach($gamesArray as $key=>$value){
+            $this->createRounds($key, $seasonId);
+
+
+
+
+        }
+
+        //$test = $this->createRounds($gameDays,$seasonId );
+        //$test2 = $this->createRoundGames($allGamesWithDate,$seasonId );
         //$test2 = $this->createRoundGames($allGamesWithDate);
 
         return $this->render('scheduleIdentityManagerBundle:scheduleManager:test.html.twig', array(
-            'test' => $test2
+            'test' => $test44
         ));
     }
 
@@ -124,23 +133,22 @@ class roundController extends Controller{
     }
 
 
-    private function createRounds($gameDays, $seasonId) {
-        $test = array();
-        foreach ($gameDays as $singleDay){
+    private function createRounds($gameDay, $seasonId) {
+
             $round = new round();
             $roundStartDay = new \DateTime();
-            $roundStartDay->setTimestamp(strtotime($singleDay));
+            $roundStartDay->setTimestamp(strtotime($gameDay));
 
             $round->setRoundType('day');
             $round->setDateStart($roundStartDay);
             $round->setSeasonId($seasonId);
 
-            //$em	=	$this->getDoctrine()->getManager();
-            //$em->persist($round);
-            //$em->flush();
-            $test[] = array(gettype($round->getDateStart()), date('Y-m-d',strtotime($singleDay)), $seasonId);
-        }
-        return $test;
+            $em	=	$this->getDoctrine()->getManager();
+            $em->persist($round);
+            $em->flush();
+            //$test[] = array(gettype($round->getDateStart()), date('Y-m-d',strtotime($singleDay)), $seasonId);
+
+        return $this;
     }
 
     private function createRoundGames($games, $seasonId){
@@ -160,7 +168,17 @@ class roundController extends Controller{
     }
 
 
-
-
-
+    private function groupGamesByDate($allGamesWithDate){
+        $testArray = array();
+        foreach($allGamesWithDate as $game){
+            if(isset($game[3])){
+                if(!array_key_exists($game[3], $testArray)){
+                    $testArray["{$game[3]}"] = array($game);
+                } else {
+                    $testArray["{$game[3]}"][] = $game;
+                }
+            }
+        }
+        return $testArray;
+    }
 }
