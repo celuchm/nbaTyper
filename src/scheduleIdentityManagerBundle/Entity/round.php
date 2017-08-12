@@ -48,7 +48,7 @@ class round
     private $seasonId;
 
     /**
-     * @var \DateTime
+     * @var Date
      *
      * @ORM\Column(name="dateStart", type="date",  nullable = true)
      */

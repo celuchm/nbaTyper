@@ -12,30 +12,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class roundController extends Controller{
 
-
+//////   lecimy po pliku CSV - tworzymy tablicę z [data kolejki/dnia] => [[mecz1][mecz2][mecz3]]
 
 
 
     public function generateRoundAction($formData){
         $file = $formData['file'];
+        $seasonId = $formData['seasonId'];
         $allGames = $this->getGamesArray($file);
         $gameDays = array_values(array_unique($this->getGameDays($allGames)));
+        $allGamesWithDate = $this->alterGameArray($allGames);
 
-        foreach ($gameDays as $singleDay){
-            $round = new round();
-            $round->setRoundType('day');
-            $round->setDateStart($singleDay);
-            $round->setSeasonId($formData['seasonId']);
-
-
-        }
-
+        $test = $this->createRounds($gameDays,$seasonId );
+        $test2 = $this->createRoundGames($allGamesWithDate,$seasonId );
+        //$test2 = $this->createRoundGames($allGamesWithDate);
 
         return $this->render('scheduleIdentityManagerBundle:scheduleManager:test.html.twig', array(
-            'test' => $formData
+            'test' => $test2
         ));
     }
 
@@ -68,6 +65,21 @@ class roundController extends Controller{
 
         return $gameDays;
     }
+
+
+    private function alterGameArray($games){
+        $alterGames = array();
+        foreach($games as $game){
+            if(isset($game[3])){
+                $game[3] = date('Y-m-d',strtotime($this->decodeDate($game[3], $this->decodeTime($game[2]))));
+                $alterGames[] = $game;
+            }
+        }
+        return $alterGames;
+
+    }
+
+
 
     private function decodeDate($csvDate, $hour){
         $year = "";
@@ -111,6 +123,41 @@ class roundController extends Controller{
         return $filterArray;
     }
 
+
+    private function createRounds($gameDays, $seasonId) {
+        $test = array();
+        foreach ($gameDays as $singleDay){
+            $round = new round();
+            $roundStartDay = new \DateTime();
+            $roundStartDay->setTimestamp(strtotime($singleDay));
+
+            $round->setRoundType('day');
+            $round->setDateStart($roundStartDay);
+            $round->setSeasonId($seasonId);
+
+            //$em	=	$this->getDoctrine()->getManager();
+            //$em->persist($round);
+            //$em->flush();
+            $test[] = array(gettype($round->getDateStart()), date('Y-m-d',strtotime($singleDay)), $seasonId);
+        }
+        return $test;
+    }
+
+    private function createRoundGames($games, $seasonId){
+        $em	=	$this->getDoctrine()->getManager();
+        $teamRepo = $em->getRepository('scheduleIdentityManagerBundle:team');
+        $result = array();
+        foreach($games as $game){
+            if(isset($game[3])){
+                //$teamHome = $em->findBy('team', $game[0]);
+                $teamHome = $teamRepo->findOneBy(array("teamShortName" => $game[0]));
+                $teamAway = $teamRepo->findOneBy(array("teamShortName" => $game[1]));
+                //$teamAway = $em->find('team', $game[1]);
+                $result[] = array($teamHome->getId(), $teamAway->getId(), $game[2].' '.$game[3]);
+            }
+        }
+        return $result;
+    }
 
 
 
